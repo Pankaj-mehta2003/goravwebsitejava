@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - JavaPro</title>
+<style>
+/* 🌈 Basic Reset */
+    /* 🌟 Global Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        background-size: 400% 400%;
+        animation: gradientShift 10s ease infinite;
+        color: #fff;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    /* 🔹 Navbar */
+    nav {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 15px 50px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+            nav ul li a {
+                text-decoration: none;
+                color: #fff;
+                font-weight: 500;
+                letter-spacing: 0.5px;
+                position: relative;
+                transition: color 0.3s ease;
+            }
+
+                nav ul li a::after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: -4px;
+                    height: 2px;
+                    width: 0%;
+                    background: #ffd166;
+                    transition: width 0.3s ease;
+                }
+
+                nav ul li a:hover::after {
+                    width: 100%;
+                }
+
+                nav ul li a:hover {
+                    color: #ffd166;
+                }
+
+    /* 💎 About Container */
+    .container {
+        max-width: 900px;
+        margin: 80px auto;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        border-radius: 25px;
+        padding: 50px 40px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        transform: translateY(30px);
+        opacity: 0;
+        transition: all 1s ease;
+    }
+
+        .container.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+    /* 🏷️ Headings */
+    h1 {
+        text-align: center;
+        font-size: 2.6em;
+        color: #ffd166;
+        margin-bottom: 15px;
+        text-shadow: 0 0 15px rgba(255, 209, 102, 0.3);
+    }
+
+    .typing {
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.1em;
+        color: #f8f8f8;
+        margin-bottom: 35px;
+        min-height: 28px;
+        letter-spacing: 0.5px;
+    }
+
+    /* 🧾 Info Card */
+    .info-card {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+        border-radius: 18px;
+        padding: 25px;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(255, 209, 102, 0.4);
+        }
+
+        .info-card p {
+            font-size: 1.1em;
+            margin: 10px 0;
+            color: #eee;
+        }
+
+    .highlight {
+        color: #ffd166;
+        font-weight: 600;
+    }
+
+    /* ☕ Java Facts */
+    h2 {
+        text-align: center;
+        margin: 40px 0 20px;
+        color: #fff;
+        font-size: 1.8em;
+        letter-spacing: 1px;
+    }
+
+    ul {
+        padding-left: 45px;
+        list-style-type: "☕ ";
+        line-height: 1.9;
+        font-size: 1.05em;
+        color: #f1f1f1;
+    }
+
+        ul li strong {
+            color: #ffd166;
+        }
+
+    /* 👣 Footer */
+    footer {
+        text-align: center;
+        padding: 25px 0;
+        color: #ddd;
+        font-size: 0.95em;
+        background: rgba(0, 0, 0, 0.3);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 60px;
+        letter-spacing: 0.4px;
+    }
+
+        footer span {
+            color: #ffd166;
+        }
+
+    /* 🎈 Floating Animation */
+    @keyframes floaty {
+        0% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-8px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    .float {
+        animation: floaty 4s ease-in-out infinite;
+    }
+
+    /* 🌅 Gradient Animation */
+    @keyframes gradientShift {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    /* 📱 Responsive */
+    @media (max-width: 768px) {
+        nav {
+            padding: 15px 25px;
+        }
+
+        .container {
+            padding: 35px 25px;
+            margin: 50px 15px;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        .info-card p {
+            font-size: 1em;
+        }
+    }
+
+</style>
+</head>
+<body>
+
+<!-- 🌟 Navbar -->
+<nav>
+
+  <ul>
+    <li style="align-content: center;"><a href="index.html">Home</a></li>
+  </ul>
+</nav>
+
+<!-- ✨ About Section -->
+<div class="container" id="aboutBox">
+  <h1>About Developer</h1>
+  <div class="typing" id="typingText"></div>
+
+  <div class="info-card float">
+    <p><span class="highlight">Name:</span> Gorav Anthwal</p>
+    <p><span class="highlight">Class:</span> BCA 5th Semester</p>
+    <p><span class="highlight">Roll No:</span> 4006/23</p>
+    <p><span class="highlight">Mentor:</span> Mr. Chetan Gupta</p>
+  </div>
+
+  <h2>About Java</h2>
+  <ul>
+    <li>Java is a <strong>platform-independent</strong> programming language.</li>
+    <li>It follows <strong>“Write Once, Run Anywhere.”</strong></li>
+    <li>Used for <strong>web, mobile, and enterprise</strong> applications.</li>
+    <li>It supports <strong>OOPs, multithreading,</strong> and <strong>exception handling.</strong></li>
+    <li>Frameworks like <strong>Spring</strong> and <strong>Hibernate</strong> make Java enterprise-ready.</li>
+  </ul>
+</div>
+
+<!-- 👣 Footer -->
+<footer>
+  © 2025 <span>JavaPro</span> | Designed by <span>Vasu Dev</span> | Mentor: <span>Mr. Chetan Gupta</span>
+</footer>
+
+<script>
+// ⌨️ Typing Effect
+const typingText=document.getElementById("typingText");
+const text="Code Smart. Think Java. Learn, Build, and Innovate!";
+let i=0;
+function typing(){
+  if(i<text.length){
+    typingText.textContent+=text.charAt(i);
+    i++;
+    setTimeout(typing,70);
+  }
+}
+window.onload=typing;
+
+// 🎬 Fade in when page loads
+window.addEventListener("load",()=>{
+  document.getElementById("aboutBox").classList.add("visible");
+});
+</script>
+</body>
+</html>
